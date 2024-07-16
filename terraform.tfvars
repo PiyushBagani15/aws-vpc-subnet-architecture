@@ -1,2 +1,2 @@
 vpc_cidr = "10.0.0.0/16"
-vpc_name = "aws_dev"
+vpc_name = "aws_prod"

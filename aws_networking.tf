@@ -1,4 +1,4 @@
-# Create the VPC
+# Creating the VPC
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr # value defined in terraform.tfvars
   enable_dns_support   = true
@@ -12,7 +12,7 @@ resource "aws_vpc" "main" {
   )
 }
 
-# Create the Internet Gateway
+# Creating the Internet Gateway
 resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.main.id
 
@@ -24,7 +24,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   )
 }
 
-# Create the Public Subnets
+# Creating the Public Subnets
 resource "aws_subnet" "public_subnet" {
   count                   = length(var.public_subnet_cidrs)
   vpc_id                  = aws_vpc.main.id
@@ -40,7 +40,7 @@ resource "aws_subnet" "public_subnet" {
   )
 }
 
-# Create the Private Subnets
+# Creating the Private Subnets
 resource "aws_subnet" "private_subnet" {
   count             = length(var.private_subnet_cidrs)
   vpc_id            = aws_vpc.main.id
@@ -55,7 +55,7 @@ resource "aws_subnet" "private_subnet" {
   )
 }
 
-# Create the NAT Gateways with Elastic IPs
+# Creating the NAT Gateways with Elastic IPs
 resource "aws_eip" "nat_eip" {
   count  = length(var.availability_zones)
   domain = "vpc"
@@ -81,7 +81,7 @@ resource "aws_nat_gateway" "nat_gateway" {
   )
 }
 
-# Create the Route Table for Public Subnet
+# Creating the Route Table for Public Subnet
 resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.main.id
 
@@ -104,7 +104,7 @@ resource "aws_route_table_association" "public_route_table_association" {
   route_table_id = aws_route_table.public_route_table.id
 }
 
-# Create the Route Table for Private Subnet
+# Creating the Route Table for Private Subnet
 resource "aws_route_table" "private_route_table" {
   count  = length(aws_subnet.private_subnet)
   vpc_id = aws_vpc.main.id

@@ -12,6 +12,7 @@ variable "common_tags" {
     Environment = "Production"
   }
 }
+
 variable "vpc_name" {
   type        = string
   description = "The name of the VPC."
@@ -41,4 +42,19 @@ variable "availability_zones" {
   description = "Availability zones for subnets"
   type        = list(string)
   default     = ["ap-south-1a", "ap-south-1b"]
+}
+############################
+## AWS Auto-Scaling Group ##  
+############################
+
+variable "instance_type" {
+  type        = string
+  default     = "t2.micro"
+  description = "The instance type"
+}
+
+variable "ami_id" {
+  type        = string
+  default     = "ami-0ec0e125bb6c6e8ec"
+  description = "The AMI id of AWS Amazon Linux Instance in Mumbai"
 }
