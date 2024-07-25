@@ -35,9 +35,6 @@ This repository provides Terraform configurations for setting up a secure AWS VP
 ## Contributing
 I want you to know that contributions to enhance this architecture are welcome. Please fork the repository and submit pull requests with your modifications.
 
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
-
 ## Contact
 Piyush Bagani - [GitHub Profile](https://github.com/PiyushBagani15)
 
